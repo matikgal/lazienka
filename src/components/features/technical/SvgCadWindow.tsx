@@ -4,7 +4,7 @@ export function SvgCadWindow() {
   const wx1 = 210; // 110 + 100 cm from Wall B
   const wx2 = 283; // 210 + 73 cm width
   const wy1 = 346; // 73 cm from slant top
-  const wy2 = 429; // 33 cm from knee wall C
+  const wy2 = 418; // 33 cm along slope above knee wall C (434)
   const wWidth = wx2 - wx1;
   const wHeight = wy2 - wy1;
   const midX = (wx1 + wx2) / 2;
@@ -67,8 +67,8 @@ export function SvgCadWindow() {
         73 cm
       </text>
 
-      <rect x={midX - 20} y={wy2 + 2} width="40" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
-      <text x={midX} y={wy2 + 7.5} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
+      <rect x={midX - 20} y={421} width="40" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
+      <text x={midX} y={426.5} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
         33 cm
       </text>
 

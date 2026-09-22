@@ -693,31 +693,83 @@ body, html {
 }
 
 @media print {
-  body, html {
-    background-color: #ffffff !important;
+  @page {
+    size: auto;
+    margin: 8mm;
+  }
+
+  html,
+  body,
+  #root,
+  .app-layout,
+  .app-main,
+  .viewport-section,
+  .cad-sheet-container {
+    background: #ffffff !important;
     color: #000000 !important;
-    overflow: visible !important;
+    width: 100% !important;
     height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    position: static !important;
+    display: block !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
   }
-  .no-print, .app-header, .sidebar-section {
+
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  *::-webkit-scrollbar {
     display: none !important;
-  }
-  .viewport-section {
-    overflow: visible !important;
-    height: auto !important;
+    width: 0 !important;
+    height: 0 !important;
     background: transparent !important;
   }
-  .cad-sheet-container {
-    background-color: #ffffff !important;
-    padding: 0 !important;
-    height: auto !important;
-    overflow: visible !important;
+
+  .no-print,
+  .app-header,
+  .sidebar-section,
+  .cad-toolbar {
+    display: none !important;
   }
+
+  .cad-sheet-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
   .cad-paper-sheet {
     box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
     max-width: 100% !important;
+  }
+
+  .sheet-drawing-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  .cad-svg-canvas {
+    max-height: none !important;
+    width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .sheet-footer {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }
 

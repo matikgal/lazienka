@@ -25,11 +25,12 @@ export function CadPlanView() {
 
         <CadSlantZoneSvg />
         <CadTitleBlock />
-        <SvgCadWindow />
 
         {CAD_PLAN_WALLS.map((wall) => (
           <CadWallSvgItem key={wall.id} wall={wall} />
         ))}
+
+        <SvgCadWindow />
 
         <CadOuterDimensions />
       </svg>
