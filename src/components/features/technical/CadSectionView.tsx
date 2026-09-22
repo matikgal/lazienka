@@ -27,8 +27,8 @@ export function CadSectionView() {
       <svg viewBox="0 0 625 440" className="cad-svg-canvas" aria-label="Przekrój pionowy przez skos łazienki">
         <rect width="625" height="440" fill={CAD_COLORS.paperBg} />
         <line x1={ox - 30} y1={oy} x2={pFloorC.x + 40} y2={oy} stroke="#475569" strokeWidth="1.2" />
-        <text x={ox - 35} y={oy + 3} fill="#475569" fontSize="8px" fontFamily={CAD_FONTS.main} textAnchor="end">
-          ±0.00 (POSADZKA)
+        <text x={ox - 10} y={oy + 3} fill="#475569" fontSize="8px" fontFamily={CAD_FONTS.main} textAnchor="end">
+          ±0.00
         </text>
 
         {/* Room cross-section profile */}
@@ -43,15 +43,15 @@ export function CadSectionView() {
         {/* 1.90m height guideline (usable area) */}
         <line x1={ox} y1={yH190} x2={pFloorC.x} y2={yH190} stroke="#94a3b8" strokeWidth="0.8" strokeDasharray="4,4" />
         <text x={ox + 10} y={yH190 - 4} fill="#64748b" fontSize="7.5px" fontFamily={CAD_FONTS.main}>
-          h = 190 cm (granica powierzchni użytkowej)
+          h = 190 cm
         </text>
 
         {/* Roof Window in slope */}
         <line x1={winTop.x} y1={winTop.y} x2={winBottom.x} y2={winBottom.y} stroke="#0284c7" strokeWidth="3.5" />
         <rect
-          x={(winTop.x + winBottom.x) / 2 - 60}
+          x={(winTop.x + winBottom.x) / 2 - 50}
           y={(winTop.y + winBottom.y) / 2 - 18}
-          width="120"
+          width="100"
           height="13"
           fill="#ffffff"
           stroke="#0284c7"
@@ -68,19 +68,19 @@ export function CadSectionView() {
           textAnchor="middle"
           dominantBaseline="central"
         >
-          OKNO DACHOWE (115 cm)
+          OKNO 115 cm
         </text>
 
         {/* Slant pitch annotation */}
-        <rect x={(pSlantStart.x + pTopC.x) / 2 - 80} y={(pSlantStart.y + pTopC.y) / 2 - 38} width="160" height="15" fill="#ffffff" stroke="#fde68a" strokeWidth="0.6" rx="2" />
+        <rect x={(pSlantStart.x + pTopC.x) / 2 - 50} y={(pSlantStart.y + pTopC.y) / 2 - 38} width="100" height="15" fill="#ffffff" stroke="#fde68a" strokeWidth="0.6" rx="2" />
         <text x={(pSlantStart.x + pTopC.x) / 2} y={(pSlantStart.y + pTopC.y) / 2 - 30} fill={CAD_COLORS.slantLine} fontSize="8px" fontWeight="bold" fontFamily={CAD_FONTS.main} textAnchor="middle" dominantBaseline="central">
-          SKOS DACHU: {slopeDeg}° (POŁAĆ 194.9 cm)
+          SKOS: {slopeDeg}°
         </text>
 
-        <CadDimensionElement data={{ x1: ox, y1: oy, x2: ox, y2: oy - hA * sy, offset: 35, text: `${hA} cm`, badge: 'Ściana A' }} />
-        <CadDimensionElement data={{ x1: pTopC.x, y1: pTopC.y, x2: pFloorC.x, y2: oy, offset: 35, text: `${hC} cm`, badge: 'Ściana C' }} />
-        <CadDimensionElement data={{ x1: pTopA.x, y1: pTopA.y, x2: pSlantStart.x, y2: pSlantStart.y, offset: 25, text: `${dFlat} cm (sufit płaski)` }} />
-        <CadDimensionElement data={{ x1: pFloorC.x, y1: oy, x2: pFloorA.x, y2: oy, offset: 35, text: `${dTotal} cm (całkowita długość [B])` }} />
+        <CadDimensionElement data={{ x1: ox, y1: oy, x2: ox, y2: oy - hA * sy, offset: 35, text: `${hA} cm`, badge: 'A' }} />
+        <CadDimensionElement data={{ x1: pTopC.x, y1: pTopC.y, x2: pFloorC.x, y2: oy, offset: 35, text: `${hC} cm`, badge: 'C' }} />
+        <CadDimensionElement data={{ x1: pTopA.x, y1: pTopA.y, x2: pSlantStart.x, y2: pSlantStart.y, offset: 25, text: `${dFlat} cm` }} />
+        <CadDimensionElement data={{ x1: pFloorC.x, y1: oy, x2: pFloorA.x, y2: oy, offset: 35, text: `${dTotal} cm` }} />
       </svg>
     </div>
   );

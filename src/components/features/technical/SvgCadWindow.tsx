@@ -39,9 +39,9 @@ export function SvgCadWindow() {
 
       {/* Center badge */}
       <rect
-        x={midX - 68}
+        x={midX - 44}
         y={midY - 8}
-        width="136"
+        width="88"
         height="16"
         fill="#ffffff"
         stroke="#0284c7"
@@ -58,32 +58,32 @@ export function SvgCadWindow() {
         fontWeight="bold"
         fontFamily={CAD_FONTS.main}
       >
-        OKNO DACHOWE 73×115 cm
+        OKNO 73 × 115
       </text>
 
       {/* Position annotations along slope */}
-      <rect x={midX - 52} y={wy1 - 12} width="104" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
-      <text x={midX} y={wy1 - 6.5} textAnchor="middle" dominantBaseline="central" fontSize="7px" fontFamily={CAD_FONTS.main} fill="#475569">
-        73 cm od załamania skosu
+      <rect x={midX - 20} y={wy1 - 12} width="40" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
+      <text x={midX} y={wy1 - 6.5} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
+        73 cm
       </text>
 
-      <rect x={midX - 52} y={wy2 + 2} width="104" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
-      <text x={midX} y={wy2 + 7.5} textAnchor="middle" dominantBaseline="central" fontSize="7px" fontFamily={CAD_FONTS.main} fill="#475569">
-        33 cm nad ścianką C
+      <rect x={midX - 20} y={wy2 + 2} width="40" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
+      <text x={midX} y={wy2 + 7.5} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
+        33 cm
       </text>
 
       {/* Horizontal distance reference to Wall B: 100 cm */}
       <line x1="110" y1={refY} x2={wx1} y2={refY} stroke="#0284c7" strokeWidth="0.8" strokeDasharray="3,2" />
-      <rect x={(110 + wx1) / 2 - 46} y={refY - 6} width="92" height="12" fill="#ffffff" stroke="#0284c7" strokeWidth="0.6" rx="2" />
+      <rect x={(110 + wx1) / 2 - 24} y={refY - 6} width="48" height="12" fill="#ffffff" stroke="#0284c7" strokeWidth="0.6" rx="2" />
       <text x={(110 + wx1) / 2} y={refY} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontWeight="bold" fontFamily={CAD_FONTS.main} fill="#0369a1">
-        100 cm (od ściany B)
+        100 cm
       </text>
 
       {/* Horizontal distance reference to Wall D: 212 cm */}
       <line x1={wx2} y1={refY} x2="495" y2={refY} stroke="#0284c7" strokeWidth="0.8" strokeDasharray="3,2" />
-      <rect x={(wx2 + 495) / 2 - 46} y={refY - 6} width="92" height="12" fill="#ffffff" stroke="#0284c7" strokeWidth="0.6" rx="2" />
+      <rect x={(wx2 + 495) / 2 - 24} y={refY - 6} width="48" height="12" fill="#ffffff" stroke="#0284c7" strokeWidth="0.6" rx="2" />
       <text x={(wx2 + 495) / 2} y={refY} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontWeight="bold" fontFamily={CAD_FONTS.main} fill="#0369a1">
-        212 cm (od ściany D)
+        212 cm
       </text>
     </g>
   );

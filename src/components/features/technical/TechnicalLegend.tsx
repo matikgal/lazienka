@@ -21,7 +21,7 @@ export function TechnicalLegend({ walls }: TechnicalLegendProps) {
 
   return (
     <div className="technical-legend">
-      <div className="legend-header">Wykaz wymiarów i wysokości ścian (Rzut Techniczny)</div>
+      <div className="legend-header">Wykaz wymiarów i wysokości ścian</div>
       <table className="legend-table">
         <thead>
           <tr>
@@ -45,9 +45,9 @@ export function TechnicalLegend({ walls }: TechnicalLegendProps) {
         </tbody>
       </table>
       <div className="legend-footer">
-        <span>Ściana [A] = pełna wys. {CURRENT_ROOF_CONFIG.maxCeilingHeight} cm | Ściana [C] = ścianka kolankowa {CURRENT_ROOF_CONFIG.kneeWallHeight} cm</span>
-        <span>Początek skosu = {CURRENT_ROOF_CONFIG.slantStartFromA} cm od ściany [A] (spadek 134.5 cm / kąt {slopeDeg}°)</span>
-        <span>Okno dachowe = 73 × 115 cm (od ściany B: 100 cm, od ściany D: 212 cm, 33 cm nad ścianką C, 73 cm od załamania skosu)</span>
+        <span>Ściana [A] = wys. {CURRENT_ROOF_CONFIG.maxCeilingHeight} cm | Ściana [C] = wys. {CURRENT_ROOF_CONFIG.kneeWallHeight} cm</span>
+        <span>Początek skosu = {CURRENT_ROOF_CONFIG.slantStartFromA} cm od ściany [A] | Kąt nachylenia = {slopeDeg}°</span>
+        <span>Okno dachowe = 73 × 115 cm | Od ściany B = 100 cm | Od ściany D = 212 cm</span>
       </div>
     </div>
   );

@@ -10,8 +10,8 @@ export function CadOuterDimensions() {
           y1: 293,
           x2: 110,
           y2: 110,
-          offset: 65,
-          text: '183 cm (płaski sufit)',
+          offset: 55,
+          text: '183 cm',
         }}
       />
       <CadDimensionElement
@@ -20,8 +20,8 @@ export function CadOuterDimensions() {
           y1: 434,
           x2: 110,
           y2: 293,
-          offset: 65,
-          text: '141 cm (skos dachu)',
+          offset: 55,
+          text: '141 cm',
         }}
       />
 
@@ -32,8 +32,8 @@ export function CadOuterDimensions() {
           y1: 434,
           x2: 110,
           y2: 434,
-          offset: 60,
-          text: '100 cm (do okna)',
+          offset: 55,
+          text: '100 cm',
         }}
       />
       <CadDimensionElement
@@ -42,8 +42,8 @@ export function CadOuterDimensions() {
           y1: 434,
           x2: 210,
           y2: 434,
-          offset: 60,
-          text: '73 cm (okno)',
+          offset: 55,
+          text: '73 cm',
         }}
       />
       <CadDimensionElement
@@ -52,8 +52,8 @@ export function CadOuterDimensions() {
           y1: 434,
           x2: 283,
           y2: 434,
-          offset: 60,
-          text: '212 cm (do ściany D)',
+          offset: 55,
+          text: '212 cm',
         }}
       />
 
@@ -64,8 +64,8 @@ export function CadOuterDimensions() {
           y1: 434,
           x2: 110,
           y2: 434,
-          offset: 92,
-          text: '385 cm (gabaryt szerokości [C])',
+          offset: 82,
+          text: '385 cm',
         }}
       />
 
@@ -76,8 +76,8 @@ export function CadOuterDimensions() {
           y1: 110,
           x2: 495,
           y2: 434,
-          offset: 65,
-          text: '324 cm (gabaryt głębokości)',
+          offset: 55,
+          text: '324 cm',
         }}
       />
     </g>

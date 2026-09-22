@@ -23,21 +23,21 @@ export function CadSheet({ walls }: CadSheetProps) {
             isActive={activeTab === 'plan'}
             onClick={() => setActiveTab('plan')}
           >
-            Rzut poziomy (Plan)
+            Rzut poziomy
           </Button>
           <Button
             variant="secondary"
             isActive={activeTab === 'section'}
             onClick={() => setActiveTab('section')}
           >
-            Przekrój pionowy (Skos)
+            Przekrój pionowy
           </Button>
           <Button
             variant="secondary"
             isActive={activeTab === 'full'}
             onClick={() => setActiveTab('full')}
           >
-            Arkusz zbiorczy (Wszystkie rzuty)
+            Arkusz zbiorczy
           </Button>
         </div>
 
@@ -55,14 +55,14 @@ export function CadSheet({ walls }: CadSheetProps) {
 
         {(activeTab === 'plan' || activeTab === 'full') && (
           <section className="sheet-drawing-section">
-            <h3 className="drawing-subtitle">1. RZUT POZIOMY POMIESZCZENIA (KOTY ŚCIAN I WNĘK)</h3>
+            <h3 className="drawing-subtitle">1. RZUT POZIOMY</h3>
             <CadPlanView />
           </section>
         )}
 
         {(activeTab === 'section' || activeTab === 'full') && (
           <section className="sheet-drawing-section">
-            <h3 className="drawing-subtitle">2. PRZEKRÓJ PIONOWY A-A (PROFIL SKOSU DACHOWEGO)</h3>
+            <h3 className="drawing-subtitle">2. PRZEKRÓJ PIONOWY A-A</h3>
             <CadSectionView />
           </section>
         )}
