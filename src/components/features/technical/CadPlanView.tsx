@@ -1,50 +1,37 @@
-import type { WallDefinition } from '../../../types/wall';
-import type { CadTransformState } from '../../../types/cadTransform';
-import { SVG_WIDTH, SVG_HEIGHT, toSvgPoint } from '../../../utils/technicalMath';
-import { transformCadPoint } from '../../../utils/cadTransformMath';
+import { CAD_PLAN_WALLS, CAD_PLAN_LAYOUT } from '../../../utils/cadPlanGeometry';
 import { CAD_COLORS } from '../../../utils/cadStyles';
 import { SvgCadWindow } from './SvgCadWindow';
 import { CadWallSvgItem } from './CadWallSvgItem';
 import { CadTitleBlock } from './CadTitleBlock';
 import { CadOuterDimensions } from './CadOuterDimensions';
 import { CadDefs } from './CadDefs';
-
 import { CadSlantZoneSvg } from './CadSlantZoneSvg';
 
-interface CadPlanViewProps {
-  readonly walls: readonly WallDefinition[];
-  readonly transform: CadTransformState;
-}
-
-export function CadPlanView({ walls, transform }: CadPlanViewProps) {
-  const polygonPoints = walls
-    .map((w) => {
-      const p = transformCadPoint(toSvgPoint(w.start), transform);
-      return `${p.x},${p.y}`;
-    })
-    .join(' ');
+export function CadPlanView() {
+  const polygonPoints = CAD_PLAN_WALLS.map((w) => `${w.p1.x},${w.p1.y}`).join(' ');
+  const { svgWidth, svgHeight } = CAD_PLAN_LAYOUT;
 
   return (
     <div className="cad-view-wrapper">
       <svg
-        viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
+        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
         className="cad-svg-canvas"
         aria-label="Czysty rysunek techniczny rzutu poziomego łazienki"
       >
         <CadDefs />
-        <rect width={SVG_WIDTH} height={SVG_HEIGHT} fill={CAD_COLORS.paperBg} />
-        <rect width={SVG_WIDTH} height={SVG_HEIGHT} fill="url(#cadGridMain)" />
+        <rect width={svgWidth} height={svgHeight} fill={CAD_COLORS.paperBg} />
+        <rect width={svgWidth} height={svgHeight} fill="url(#cadGridMain)" />
         <polygon points={polygonPoints} fill={CAD_COLORS.floorBg} stroke="#94a3b8" strokeWidth="0.8" />
 
-        <CadSlantZoneSvg transform={transform} />
+        <CadSlantZoneSvg />
         <CadTitleBlock />
-        <SvgCadWindow transform={transform} />
+        <SvgCadWindow />
 
-        {walls.map((w) => (
-          <CadWallSvgItem key={w.id} wall={w} transform={transform} />
+        {CAD_PLAN_WALLS.map((wall) => (
+          <CadWallSvgItem key={wall.id} wall={wall} />
         ))}
 
-        <CadOuterDimensions transform={transform} />
+        <CadOuterDimensions />
       </svg>
     </div>
   );

@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import type { WallDefinition } from '../../../types/wall';
 import type { CadViewType } from '../../../types/cad';
-import type { CadTransformState } from '../../../types/cadTransform';
-import { DEFAULT_CAD_TRANSFORM } from '../../../types/cadTransform';
 import { Button } from '../../ui/Button';
 import { CadPlanView } from './CadPlanView';
 import { CadSectionView } from './CadSectionView';
 import { TechnicalLegend } from './TechnicalLegend';
-import { CadTransformToolbar } from './CadTransformToolbar';
 import { CadSheetHeader } from './CadSheetHeader';
 
 interface CadSheetProps {
@@ -16,7 +13,6 @@ interface CadSheetProps {
 
 export function CadSheet({ walls }: CadSheetProps) {
   const [activeTab, setActiveTab] = useState<CadViewType>('plan');
-  const [transform, setTransform] = useState<CadTransformState>(DEFAULT_CAD_TRANSFORM);
 
   return (
     <div className="cad-sheet-container">
@@ -45,14 +41,6 @@ export function CadSheet({ walls }: CadSheetProps) {
           </Button>
         </div>
 
-        <CadTransformToolbar
-          transform={transform}
-          onSetRotation={(rot) => setTransform((prev) => ({ ...prev, rotation: rot }))}
-          onToggleFlipH={() => setTransform((prev) => ({ ...prev, flipH: !prev.flipH }))}
-          onToggleFlipV={() => setTransform((prev) => ({ ...prev, flipV: !prev.flipV }))}
-          onReset={() => setTransform(DEFAULT_CAD_TRANSFORM)}
-        />
-
         <Button
           variant="outline"
           onClick={() => window.print()}
@@ -68,7 +56,7 @@ export function CadSheet({ walls }: CadSheetProps) {
         {(activeTab === 'plan' || activeTab === 'full') && (
           <section className="sheet-drawing-section">
             <h3 className="drawing-subtitle">1. RZUT POZIOMY POMIESZCZENIA (KOTY ŚCIAN I WNĘK)</h3>
-            <CadPlanView walls={walls} transform={transform} />
+            <CadPlanView />
           </section>
         )}
 

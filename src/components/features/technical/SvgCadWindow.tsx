@@ -1,48 +1,46 @@
-import type { CadTransformState } from '../../../types/cadTransform';
-import { toSvgX, toSvgY } from '../../../utils/technicalMath';
-import { transformCadPoint } from '../../../utils/cadTransformMath';
 import { CAD_FONTS, CAD_STROKES } from '../../../utils/cadStyles';
-import { CURRENT_ROOF_WINDOW } from '../../../types/window';
 
-interface SvgCadWindowProps {
-  readonly transform: CadTransformState;
-}
-
-export function SvgCadWindow({ transform }: SvgCadWindowProps) {
-  const win = CURRENT_ROOF_WINDOW;
-  const wx1 = toSvgX(-143 + win.distFromLeft);
-  const wx2 = toSvgX(-143 + win.distFromLeft + win.width);
-  const wyTop = toSvgY(-236);
-  const wyBottom = toSvgY(-319);
-
-  const c1 = transformCadPoint({ x: wx1, y: wyTop }, transform);
-  const c2 = transformCadPoint({ x: wx2, y: wyTop }, transform);
-  const c3 = transformCadPoint({ x: wx2, y: wyBottom }, transform);
-  const c4 = transformCadPoint({ x: wx1, y: wyBottom }, transform);
-
-  const midX = (c1.x + c3.x) / 2;
-  const midY = (c1.y + c3.y) / 2;
-
-  const polyPoints = `${c1.x},${c1.y} ${c2.x},${c2.y} ${c3.x},${c3.y} ${c4.x},${c4.y}`;
+export function SvgCadWindow() {
+  const wx1 = 311;
+  const wx2 = 384;
+  const wy1 = 346;
+  const wy2 = 429;
+  const wWidth = wx2 - wx1;
+  const wHeight = wy2 - wy1;
+  const midX = (wx1 + wx2) / 2;
+  const midY = (wy1 + wy2) / 2;
 
   return (
     <g className="cad-roof-window">
       {/* Outer frame */}
-      <polygon
-        points={polyPoints}
+      <rect
+        x={wx1}
+        y={wy1}
+        width={wWidth}
+        height={wHeight}
         fill="#f0f9ff"
         stroke="#0284c7"
         strokeWidth={CAD_STROKES.wallDoor}
       />
-      {/* Inner glass diagonals */}
-      <line x1={c1.x} y1={c1.y} x2={c3.x} y2={c3.y} stroke="#bae6fd" strokeWidth="0.8" />
-      <line x1={c2.x} y1={c2.y} x2={c4.x} y2={c4.y} stroke="#bae6fd" strokeWidth="0.8" />
-
-      {/* Center title badge with white mask */}
+      {/* Inner glass pane */}
       <rect
-        x={midX - 70}
+        x={wx1 + 3}
+        y={wy1 + 3}
+        width={wWidth - 6}
+        height={wHeight - 6}
+        fill="#e0f2fe"
+        stroke="#38bdf8"
+        strokeWidth="0.8"
+      />
+      {/* Diagonal sash lines */}
+      <line x1={wx1 + 3} y1={wy1 + 3} x2={wx2 - 3} y2={wy2 - 3} stroke="#bae6fd" strokeWidth="0.8" />
+      <line x1={wx2 - 3} y1={wy1 + 3} x2={wx1 + 3} y2={wy2 - 3} stroke="#bae6fd" strokeWidth="0.8" />
+
+      {/* Center badge */}
+      <rect
+        x={midX - 68}
         y={midY - 8}
-        width="140"
+        width="136"
         height="16"
         fill="#ffffff"
         stroke="#0284c7"
@@ -59,21 +57,19 @@ export function SvgCadWindow({ transform }: SvgCadWindowProps) {
         fontWeight="bold"
         fontFamily={CAD_FONTS.main}
       >
-        OKNO DACHOWE {win.width}×{win.height} cm
+        OKNO DACHOWE 73×115 cm
       </text>
 
-      {/* Position annotations with white masks */}
-      <g>
-        <rect x={midX - 55} y={wyTop - 14} width="110" height="12" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
-        <text x={midX} y={wyTop - 8} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
-          73 cm od załamania skosu
-        </text>
+      {/* Position annotations */}
+      <rect x={midX - 55} y={wy1 - 13} width="110" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
+      <text x={midX} y={wy1 - 7.5} textAnchor="middle" dominantBaseline="central" fontSize="7px" fontFamily={CAD_FONTS.main} fill="#475569">
+        73 cm od załamania skosu
+      </text>
 
-        <rect x={midX - 55} y={wyBottom + 3} width="110" height="12" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
-        <text x={midX} y={wyBottom + 9} textAnchor="middle" dominantBaseline="central" fontSize="7.5px" fontFamily={CAD_FONTS.main} fill="#475569">
-          33 cm nad ścianką C
-        </text>
-      </g>
+      <rect x={midX - 55} y={wy2 + 2} width="110" height="11" fill="#ffffff" stroke="#cbd5e1" strokeWidth="0.5" rx="2" />
+      <text x={midX} y={wy2 + 7.5} textAnchor="middle" dominantBaseline="central" fontSize="7px" fontFamily={CAD_FONTS.main} fill="#475569">
+        33 cm nad ścianką C
+      </text>
     </g>
   );
 }
